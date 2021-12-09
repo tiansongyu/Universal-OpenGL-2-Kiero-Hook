@@ -142,7 +142,7 @@ namespace ImGuiHook
 	// Initialise hook
 	bool InitHook()
 	{
-		if (kiero::init(kiero::RenderType::Auto) == kiero::Status::Success)
+		if (kiero::init(kiero::RenderType::OpenGL) == kiero::Status::Success)
 			return kiero::bind(get_wglSwapBuffers(), (void**)&o_wglSwapBuffers, h_wglSwapBuffers) == kiero::Status::Success;
 
 		return false;
