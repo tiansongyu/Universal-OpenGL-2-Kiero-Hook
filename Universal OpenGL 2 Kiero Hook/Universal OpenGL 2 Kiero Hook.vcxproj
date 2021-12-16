@@ -178,6 +178,7 @@
     <ClInclude Include="include\kiero\minhook\src\hde\table32.h" />
     <ClInclude Include="include\kiero\minhook\src\hde\table64.h" />
     <ClInclude Include="include\kiero\minhook\src\trampoline.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
