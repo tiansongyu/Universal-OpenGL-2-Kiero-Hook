@@ -81,6 +81,12 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AcGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\imgui_hook.h">
@@ -139,6 +145,15 @@
     </ClInclude>
     <ClInclude Include="Util.h">
       <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="datastruct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AcGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="offset.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

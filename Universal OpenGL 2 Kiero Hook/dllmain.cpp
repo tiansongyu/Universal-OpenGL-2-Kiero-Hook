@@ -1,29 +1,41 @@
 #include <Windows.h>
 #include "include/imgui_hook.h"
 #include "include/imgui/imgui.h"
+#include "datastruct.h"
 #include "Util.h"
-static int number = 1;
+#include "AcGame.h"
+bool isDisplay = false;
+bool isFirst = true;
 
-
-void RenderMain() 
+AcGame* acgame;
+void RenderMain()
 {
-	ImGui::Begin("Window Title");
-	if (ImGui::Button("health button"))
+	if (isFirst)
 	{
-		(*(UTIL::get_offset_pointer(4,0x400000,0x1880C4,0,0x408)))++;
+		acgame = new AcGame();
+		acgame->init();
+		isFirst = false;
 	}
-	if (ImGui::Button("bullet button"))
-	{
-		(*(UTIL::get_offset_pointer(3, 0x400000, 0x187C0C, 0xEC + 0x54)))++;
-	}
-	if ( ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z)))
-	{
-		(*(UTIL::get_offset_pointer(3, 0x400000, 0x187C0C, 0xEC + 0x54)))++;
-	}
-	ImGui::Text("health = %x", *(UTIL::get_offset_pointer(4, 0x400000, 0x1880C4, 0, 0x408)));
-	ImGui::Text("bullet = %x", *(UTIL::get_offset_pointer(3, 0x400000, 0x187C0C, 0xEC + 0x54)));
 
-	ImGui::End();
+	if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z)))
+		isDisplay = !isDisplay;
+	if (isDisplay)
+	{
+		acgame->update();
+
+		ImGui::Begin("ac hack");
+
+
+		ImGui::Text("player angle: %f %f %f", acgame->local_player->angle.x,  acgame->local_player->angle.y, acgame->local_player->angle.z);
+		// ImGui::Text("current weapon name: %s", local_player->current_weapon_ptr->weapon_name_ptr);
+		ImGui::Text("player number is %d", acgame->numPlayers);
+		for (int i = 0; i < acgame->numPlayers; i++)
+		{
+			ImGui::Text("%d is %s", i + 1, (char*)&(acgame->entiylist->player_ptr[i]->player_name));
+		}
+
+		ImGui::End();
+	}
 }
 
 BOOL WINAPI DllMain(HMODULE hMod, DWORD dwReason, LPVOID lpReserved)
@@ -35,7 +47,9 @@ BOOL WINAPI DllMain(HMODULE hMod, DWORD dwReason, LPVOID lpReserved)
 		ImGuiHook::Load(RenderMain);
 		break;
 	case DLL_PROCESS_DETACH:
+		delete acgame;
 		ImGuiHook::Unload();
+		
 		break;
 	}
 	return TRUE;
