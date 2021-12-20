@@ -19,6 +19,7 @@ void RenderMain()
 
 	if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z)))
 		isDisplay = !isDisplay;
+
 	if (isDisplay)
 	{
 		acgame->update();

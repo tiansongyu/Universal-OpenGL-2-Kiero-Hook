@@ -143,9 +143,6 @@
     <ClInclude Include="include\kiero\minhook\include\MinHook.h">
       <Filter>Includes\kiero\minhook\include</Filter>
     </ClInclude>
-    <ClInclude Include="Util.h">
-      <Filter>Includes</Filter>
-    </ClInclude>
     <ClInclude Include="datastruct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -153,6 +150,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="offset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
