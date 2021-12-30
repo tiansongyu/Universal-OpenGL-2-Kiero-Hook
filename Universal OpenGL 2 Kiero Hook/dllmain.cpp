@@ -1,10 +1,17 @@
+#include <stdarg.h>
 #include <Windows.h>
-#include "include/imgui_hook.h"
+#include <TlHelp32.h>
+#include <tchar.h>
+#include <cstdint>
+#include <cstdio>
+#include <iostream>
 #include "include/imgui/imgui.h"
-#include "datastruct.h"
-#include "Util.h"
+#include "include/imgui_hook.h"
+
 #include "AcGame.h"
-bool isDisplay = false;
+#include "varAddress.h"
+using namespace std;
+bool isDisplay = true;
 bool isFirst = true;
 
 AcGame* acgame;
@@ -15,6 +22,10 @@ void RenderMain()
 		acgame = new AcGame();
 		acgame->init();
 		isFirst = false;
+
+		/*AllocConsole();
+		FILE* f = new FILE();
+		freopen_s(&f, "CONOUT$", "w", stdout);*/
 	}
 
 	if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z)))
@@ -23,19 +34,7 @@ void RenderMain()
 	if (isDisplay)
 	{
 		acgame->update();
-
-		ImGui::Begin("ac hack");
-
-
-		ImGui::Text("player angle: %f %f %f", acgame->local_player->angle.x,  acgame->local_player->angle.y, acgame->local_player->angle.z);
-		// ImGui::Text("current weapon name: %s", local_player->current_weapon_ptr->weapon_name_ptr);
-		ImGui::Text("player number is %d", acgame->numPlayers);
-		for (int i = 0; i < acgame->numPlayers; i++)
-		{
-			ImGui::Text("%d is %s", i + 1, (char*)&(acgame->entiylist->player_ptr[i]->player_name));
-		}
-
-		ImGui::End();
+		acgame->drawBox();
 	}
 }
 

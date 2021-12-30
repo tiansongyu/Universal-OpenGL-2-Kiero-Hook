@@ -84,6 +84,9 @@
     <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="varAddress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="AcGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -149,7 +152,7 @@
     <ClInclude Include="AcGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="offset.h">
+    <ClInclude Include="varAddress.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Util.h">

@@ -1,18 +1,74 @@
-#pragma once
-#pragma once
-#include <cstdint>
-struct Vector3 { float x, y, z; };
+#ifndef datastruct__
+#define datastruct__
 
+#include <cstdint>
+
+
+struct vec
+{
+	union {
+		struct { float x, y, z; };
+		float v[3];
+		int i[3];
+	};
+};
+
+struct vec4
+{
+	union {
+		struct { float x, y, z, w; };
+		float v[4];
+		int i[4];
+	};
+};
+
+struct Matrixf
+{
+	float v[16];
+
+	float operator[](int i)const { return v[i]; }
+	float& operator[](int i) { return v[i]; }
+
+	float transformx(const vec& p) const
+	{
+		return p.x * v[0] + p.y * v[1] + p.z * v[2] + v[3];
+	}
+
+	float transformy(const vec& p) const
+	{
+		return p.x * v[4] + p.y * v[5] + p.z * v[6] + v[7];
+	}
+
+	float transformz(const vec& p) const
+	{
+		return p.x * v[8] + p.y * v[9] + p.z * v[10] + v[11];
+	}
+
+	float transformw(const vec& p) const
+	{
+		return p.x * v[12] + p.y * v[13] + p.z * v[14] + v[15];
+	}
+
+	void transform(const vec& in, vec4& out) const
+	{
+		out.x = transformx(in);
+		out.y = transformy(in);
+		out.z = transformz(in);
+		out.w = transformw(in);
+	}
+};
 // BaseAddress + offset 
-#define GAME_OFFSET(offset) (&((char*)this->BaseAddress)[offset])
+#define GAME_OFFSET(offset) (&((char*)this->baseAddress)[offset])
 // Created with ReClass.NET 1.2 by KN4CK3R
 
 class player
 {
 public:
-	char pad_0000[40]; //0x0000
-	Vector3 pos; //0x0028
-	Vector3 angle; //0x0034
+	char pad_0000[1]; //0x0000
+	vec head;
+	char pad_0001[24];
+	vec pos; //0x0028
+	vec angle; //0x0034
 	char pad_0040[220]; //0x0040
 	int32_t ammo_1_retain; //0x011C
 	char pad_0120[12]; //0x0120
@@ -44,3 +100,11 @@ public:
 	class player* player_ptr[31]; //0x0004
 	char pad_0080[1228]; //0x0080
 }; //Size: 0x054C
+
+
+
+
+
+#endif // datastdatastruct__ruct
+
+

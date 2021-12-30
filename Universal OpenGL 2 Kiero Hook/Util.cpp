@@ -1,5 +1,4 @@
 #include "Util.h"
-
 int* UTIL::getOffsetPointer(int n, ...)
 {
     va_list vl;

@@ -5,7 +5,7 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_win32.h"
 #include "imgui/imgui_impl_opengl2.h"
-
+#include "../varAddress.h"
 #define _CAST(t,v)	reinterpret_cast<t>(v)
 #define _VOID_1(v)	std::function<void(v)>
 #define _VOID_2(v)	_VOID_1(_VOID_1(v))
@@ -80,6 +80,11 @@ namespace ImGuiHook
 
 		tStatus &= ImGui_ImplWin32_Init(hWnd);
 		tStatus &= ImGui_ImplOpenGL2_Init();
+
+		RECT WindowsRect;
+		GetClientRect(hWnd, &WindowsRect);
+		AC::Base::WindowWidth = WindowsRect.right - WindowsRect.left;
+		AC::Base::WindowHeigth = WindowsRect.bottom - WindowsRect.top;
 
 		*init = true;
 		return ExitStatus(status, tStatus);
