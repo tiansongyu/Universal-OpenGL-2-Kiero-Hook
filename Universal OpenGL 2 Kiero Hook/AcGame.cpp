@@ -10,7 +10,7 @@ void AcGame::init_base_address()
 {
 	this->entiylist = *(entiyList**)GAME_OFFSET(0x187C10);
 	this->local_player = *(player**)GAME_OFFSET(0x17B0B8);
-	AC::Base::MatrixAddress = (Matrixf*)GAME_OFFSET(0x17b060 + 0x10);
+	AC::Base::MatrixAddress = (Matrixf*)GAME_OFFSET(0x17afd8+8);
 }
 
 void AcGame::setModuleBaseAddress(WCHAR* str)

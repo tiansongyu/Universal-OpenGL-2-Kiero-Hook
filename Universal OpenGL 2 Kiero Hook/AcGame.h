@@ -1,7 +1,7 @@
 #ifndef AcGame__
 #define AcGame__
 
-#include "datastruct.h"
+#include "gamestruct.h"
 #include <cstdint>
 #include <Windows.h>
 #include "Util.h"
@@ -25,7 +25,6 @@ public:
 
 
 		this->ent = ent;
-		// ÅÐ¶ÏÉúËÀ
 		if (check)
 		{
 			this->headpos3D = this->ent->head;

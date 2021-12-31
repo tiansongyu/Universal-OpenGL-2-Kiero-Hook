@@ -146,7 +146,7 @@
     <ClInclude Include="include\kiero\minhook\include\MinHook.h">
       <Filter>Includes\kiero\minhook\include</Filter>
     </ClInclude>
-    <ClInclude Include="datastruct.h">
+    <ClInclude Include="gamestruct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AcGame.h">

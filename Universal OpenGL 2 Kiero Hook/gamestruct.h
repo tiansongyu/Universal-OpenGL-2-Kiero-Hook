@@ -31,22 +31,22 @@ struct Matrixf
 
 	float transformx(const vec& p) const
 	{
-		return p.x * v[0] + p.y * v[1] + p.z * v[2] + v[3];
+		return p.x * v[0] + p.y * v[4] + p.z * v[8] + v[12];
 	}
 
 	float transformy(const vec& p) const
 	{
-		return p.x * v[4] + p.y * v[5] + p.z * v[6] + v[7];
+		return p.x * v[1] + p.y * v[5] + p.z * v[9] + v[13];
 	}
 
 	float transformz(const vec& p) const
 	{
-		return p.x * v[8] + p.y * v[9] + p.z * v[10] + v[11];
+		return p.x * v[2] + p.y * v[6] + p.z * v[10] + v[14];
 	}
 
 	float transformw(const vec& p) const
 	{
-		return p.x * v[12] + p.y * v[13] + p.z * v[14] + v[15];
+		return p.x * v[3] + p.y * v[7] + p.z * v[11] + v[15];
 	}
 
 	void transform(const vec& in, vec4& out) const
