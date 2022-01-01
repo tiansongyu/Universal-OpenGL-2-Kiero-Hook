@@ -4,6 +4,24 @@
 #include <cstdint>
 
 
+class entiyList
+{
+public:
+	char pad_0000[4]; //0x0000
+	class player* player_ptr[31]; //0x0004
+	char pad_0080[1228]; //0x0080
+}; //Size: 0x054C
+
+class weapon_info
+{
+public:
+	char N0000077C[16]; //0x0000
+	char pad_0010[86]; //0x0010
+	bool isAutoGun; //0x0066
+	char pad_0067[9]; //0x0067
+}; //Size: 0x0070
+
+
 struct vec
 {
 	union {
@@ -12,6 +30,8 @@ struct vec
 		int i[3];
 	};
 };
+
+
 
 struct vec4
 {
@@ -57,51 +77,57 @@ struct Matrixf
 		out.w = transformw(in);
 	}
 };
+
+
 // BaseAddress + offset 
 #define GAME_OFFSET(offset) (&((char*)this->baseAddress)[offset])
 // Created with ReClass.NET 1.2 by KN4CK3R
 
+// Created with ReClass.NET 1.2 by KN4CK3R
+
+using Vector3 = vec;
+
+
 class player
 {
 public:
-	char pad_0000[1]; //0x0000
-	vec head;
-	char pad_0001[24];
-	vec pos; //0x0028
-	vec angle; //0x0034
-	char pad_0040[220]; //0x0040
-	int32_t ammo_1_retain; //0x011C
-	char pad_0120[12]; //0x0120
-	int32_t ammo_2; //0x012C
-	char pad_0130[16]; //0x0130
-	int32_t ammo_1; //0x0140
-	char pad_0144[193]; //0x0144
-	char player_name[16]; //0x0205
-	char pad_0215[259]; //0x0215
-	bool team; //0x0318
-	char pad_0319[75]; //0x0319
+	char pad_0000[4]; //0x0000
+	Vector3 head; //0x0004
+	char pad_0010[24]; //0x0010
+	Vector3 pos; //0x0028
+	Vector3 angle; //0x0034
+	char pad_0040[37]; //0x0040
+	bool is_not_Attacked; //0x0065
+	char pad_0066[16]; //0x0066
+	bool isDied; //0x0076
+	char pad_0077[117]; //0x0077
+	uint32_t health; //0x00EC
+	int32_t armor; //0x00F0
+	char pad_00F4[272]; //0x00F4
+	bool isAttacking; //0x0204
+	char name[16]; //0x0205
+	char pad_0215[247]; //0x0215
+	int8_t team; //0x030C
+	char pad_030D[87]; //0x030D
 	class current_weapon* current_weapon_ptr; //0x0364
-}; //Size: 0x0368
+	char pad_0368[80]; //0x0368
+}; //Size: 0x03B8
+
+
+
 
 class current_weapon
 {
 public:
 	char pad_0000[8]; //0x0000
 	class player* player_ptr; //0x0008
-	char* weapon_name_ptr; //0x000C
+	class weapon_info* weapon_info_ptr; //0x000C
 	void* current_weapon_ammo_retaion_ptr; //0x0010
 	int32_t* current_weapon_ammo_ptr; //0x0014
-}; //Size: 0x0018
-
-class entiyList
-{
-public:
-	char pad_0000[4]; //0x0000
-	class player* player_ptr[31]; //0x0004
-	char pad_0080[1228]; //0x0080
-}; //Size: 0x054C
-
-
+	char pad_0018[4]; //0x0018
+	int32_t shots_numbers; //0x001C
+	char pad_0020[120]; //0x0020
+}; //Size: 0x0098
 
 
 

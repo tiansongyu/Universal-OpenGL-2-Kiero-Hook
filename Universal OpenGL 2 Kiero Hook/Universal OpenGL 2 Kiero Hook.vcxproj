@@ -161,7 +161,7 @@
     <ClCompile Include="include\kiero\minhook\src\hook.c" />
     <ClCompile Include="include\kiero\minhook\src\trampoline.c" />
     <ClCompile Include="Util.cpp" />
-    <ClCompile Include="varAddress.cpp" />
+    <ClCompile Include="base.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AcGame.h" />
@@ -185,7 +185,7 @@
     <ClInclude Include="include\kiero\minhook\src\hde\table64.h" />
     <ClInclude Include="include\kiero\minhook\src\trampoline.h" />
     <ClInclude Include="Util.h" />
-    <ClInclude Include="varAddress.h" />
+    <ClInclude Include="base.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

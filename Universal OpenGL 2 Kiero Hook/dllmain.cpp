@@ -9,18 +9,18 @@
 #include "include/imgui_hook.h"
 
 #include "AcGame.h"
-#include "varAddress.h"
+#include "base.h"
 using namespace std;
 bool isDisplay = true;
 bool isFirst = true;
-
+bool isBox = true;
 AcGame* acgame;
 void RenderMain()
 {
 	if (isFirst)
 	{
 		acgame = new AcGame();
-		acgame->init();
+		acgame->Init();
 		isFirst = false;
 
 		/*AllocConsole();
@@ -31,10 +31,14 @@ void RenderMain()
 	if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z)))
 		isDisplay = !isDisplay;
 
+	if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z)))
+		isBox = !isBox;
+
 	if (isDisplay)
 	{
-		acgame->update();
-		acgame->drawBox();
+		acgame->Update();
+		if(acgame->numPlayers > 0 && acgame->numPlayers < 50 && isBox)
+			acgame->DrawBox();
 	}
 }
 

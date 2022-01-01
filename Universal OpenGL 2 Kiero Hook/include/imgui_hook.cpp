@@ -5,7 +5,7 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_win32.h"
 #include "imgui/imgui_impl_opengl2.h"
-#include "../varAddress.h"
+#include "../base.h"
 #define _CAST(t,v)	reinterpret_cast<t>(v)
 #define _VOID_1(v)	std::function<void(v)>
 #define _VOID_2(v)	_VOID_1(_VOID_1(v))
